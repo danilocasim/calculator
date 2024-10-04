@@ -24,15 +24,11 @@ function operate(firstNumber, operator, secondNumber) {
   switch (operator) {
     case "+":
       return add(firstNumber, secondNumber);
-      break;
     case "-":
       return subtract(firstNumber, secondNumber);
-      break;
     case "*":
       return multiply(firstNumber, secondNumber);
-      break;
     case "/":
       return divide(firstNumber, secondNumber);
-      break;
   }
 }

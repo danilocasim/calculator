@@ -1,0 +1,53 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aquamarine;
+}
+
+.live-solution {
+  background-color: pink;
+  height: 100px;
+  width: 400px;
+  text-align: end;
+  padding-top: 25px;
+  font-size: 50px;
+}
+
+.first-row,
+.second-row,
+.third-row,
+.fourth-row,
+.fifth-row {
+  display: flex;
+  width: 400px;
+}
+
+button {
+  flex: 1;
+  height: 100px;
+  border: 1px solid pink;
+  cursor: pointer;
+}
+
+.double-width {
+  flex: 2;
+}
