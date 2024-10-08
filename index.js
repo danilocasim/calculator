@@ -21,7 +21,7 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-function operate(firstNumber, operator, secondNumber) {
+function operate(operator, firstNumber, secondNumber) {
   switch (operator) {
     case "+":
       return add(firstNumber, secondNumber);
@@ -33,3 +33,49 @@ function operate(firstNumber, operator, secondNumber) {
       return divide(firstNumber, secondNumber);
   }
 }
+
+function displayText(button) {
+  const buttonContent = button.textContent;
+
+  if (button.classList.contains("number")) {
+    displayValue += buttonContent;
+    liveView.textContent += buttonContent;
+  } else if (button.classList.contains("operator")) {
+    displayValue += ` ${buttonContent} `;
+    liveView.textContent = "";
+  }
+}
+
+let firstNumber;
+let secondNumber;
+let operator;
+let solution;
+let displayValue = "";
+let array;
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.classList.contains("number")) {
+      displayText(button);
+    } else if (button.classList.contains("operator")) {
+      displayText(button);
+    }
+  });
+});
+
+equal.addEventListener("click", () => {
+  if (solution) {
+    array = displayValue.split(" ");
+    operator = array[array.length - 2];
+    secondNumber = array[array.length - 1];
+    solution = operate(operator, solution, +secondNumber);
+    liveView.textContent = solution;
+  } else {
+    array = displayValue.split(" ");
+    firstNumber = array[array.length - 3];
+    operator = array[array.length - 2];
+    secondNumber = array[array.length - 1];
+    solution = operate(operator, +firstNumber, +secondNumber);
+    liveView.textContent = solution;
+  }
+});
