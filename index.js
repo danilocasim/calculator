@@ -21,6 +21,10 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
+function modulo(num1, num2) {
+  return num1 % num2;
+}
+
 function operate(operator, firstNumber, secondNumber) {
   switch (operator) {
     case "+":
@@ -31,6 +35,8 @@ function operate(operator, firstNumber, secondNumber) {
       return multiply(firstNumber, secondNumber);
     case "/":
       return divide(firstNumber, secondNumber);
+    case "%":
+      return modulo(firstNumber, secondNumber);
   }
 }
 
@@ -49,15 +55,24 @@ function displayText() {
   });
 }
 
+function clearText() {
+  clear.addEventListener("click", () => {
+    liveView.textContent = "";
+    displayValue = "";
+    solution = "";
+  });
+}
+
 function displaySolution() {
   displayText();
+  clearText();
 
   equal.addEventListener("click", () => {
     if (solution) {
       array = displayValue.split(" ");
       operator = array[array.length - 2];
       secondNumber = array[array.length - 1];
-      solution = operate(operator, solution, +secondNumber);
+      solution = operate(operator, +solution, +secondNumber);
       liveView.textContent = solution;
     } else {
       array = displayValue.split(" ");
