@@ -63,25 +63,25 @@ function clearText() {
   });
 }
 
+function round(num) {
+  return Math.round(num * 100) / 100;
+}
+
+function getCalculation(containValue) {
+  array = displayValue.split(" ");
+  firstNumber = containValue ? solution : array[array.length - 3];
+  operator = array[array.length - 2];
+  secondNumber = array[array.length - 1];
+  solution = round(operate(operator, +firstNumber, +secondNumber));
+  liveView.textContent = solution ? solution : "";
+}
+
 function displaySolution() {
   displayText();
   clearText();
 
   equal.addEventListener("click", () => {
-    if (solution) {
-      array = displayValue.split(" ");
-      operator = array[array.length - 2];
-      secondNumber = array[array.length - 1];
-      solution = operate(operator, +solution, +secondNumber);
-      liveView.textContent = solution;
-    } else {
-      array = displayValue.split(" ");
-      firstNumber = array[array.length - 3];
-      operator = array[array.length - 2];
-      secondNumber = array[array.length - 1];
-      solution = operate(operator, +firstNumber, +secondNumber);
-      liveView.textContent = solution;
-    }
+    getCalculation(solution);
   });
 }
 
