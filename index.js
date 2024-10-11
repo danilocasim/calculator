@@ -126,7 +126,7 @@ document.body.addEventListener("keydown", (e) => {
   let operators = ["+", "-", "/", "*", "%"];
 
   let key = e.key;
-  if (Number.isInteger(+key) && key !== " ") {
+  if ((Number.isInteger(+key) && key !== " ") || key == ".") {
     displayValue += key;
     liveView.textContent += key;
   } else if (operators.includes(key)) {

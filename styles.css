@@ -25,6 +25,15 @@ body {
   min-height: 100vh;
 }
 
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border: 2px solid #00ffff;
+  padding: 15px;
+  border-radius: 25px;
+}
+
 .live-solution {
   height: 100px;
   width: 400px;
