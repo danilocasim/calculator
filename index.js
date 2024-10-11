@@ -28,7 +28,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  if (num2 == 0) return "i miss u";
+  let words = ["i miss u", "i love you", "mama mo", "engk", "error tol"];
+  let random = Math.floor(Math.random() * words.length);
+  if (num2 == 0) return words[random];
   return num1 / num2;
 }
 
