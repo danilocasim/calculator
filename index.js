@@ -135,19 +135,11 @@ document.body.addEventListener("keydown", (e) => {
   let operators = ["+", "-", "/", "*", "%"];
 
   let key = e.key;
-  if ((Number.isInteger(+key) && key !== " ") || key == "." || key == "-") {
-    if (liveView.textContent == "" && key == "-") {
-      displayValue += "-";
-      liveView.textContent = "-";
-    } else {
-      displayValue += ` ${key} `;
-      liveView.textContent = "";
-    }
+  if ((Number.isInteger(+key) && key !== " ") || key == ".") {
     displayValue += key;
     liveView.textContent += key;
   } else if (operators.includes(key)) {
-    displayValue += ` ${key} `;
-    liveView.textContent = "";
+    negativeOrOperator(key);
   } else if (key == "Backspace") {
     clearText();
   } else if (key == "Enter") {
