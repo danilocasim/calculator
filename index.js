@@ -83,8 +83,7 @@ function displayText(button) {
 function dotLimiter() {
   if (liveView.textContent.split("").includes(".")) {
     dot.disabled = true;
-    dot.style.backgroundColor = "#EFEFEF";
-    dot.style.color = "black";
+    dot.style.color = "#00FFFF,";
   } else {
     dot.disabled = false;
   }

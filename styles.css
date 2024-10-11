@@ -12,24 +12,27 @@ html {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  color: #00ffff;
 }
 
 .container {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: aquamarine;
+  gap: 10px;
+  min-height: 100vh;
 }
 
 .live-solution {
-  background-color: pink;
   height: 100px;
   width: 400px;
   text-align: end;
   padding-top: 25px;
   font-size: 50px;
+  border: 2px solid #00ffff;
+  border-radius: 25px;
 }
 
 .first-row,
@@ -39,13 +42,29 @@ body {
 .fifth-row {
   display: flex;
   width: 400px;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 button {
   flex: 1;
   height: 100px;
-  border: 1px solid pink;
+  border: 2px solid #00ffff;
+  background-color: inherit;
+  color: #00ffff;
   cursor: pointer;
+  border-radius: 50px;
+}
+
+button:hover {
+  background-color: #00ffff;
+  color: black;
+  transition: 0.5s;
 }
 
 .double-width {
