@@ -6,6 +6,7 @@ const equal = document.querySelector(".equal");
 const clear = document.querySelector(".clear");
 const del = document.querySelector(".delete");
 const dot = document.querySelector(".dot");
+const negative = document.querySelector(".negative");
 
 let firstNumber;
 let secondNumber;
@@ -64,6 +65,16 @@ function getCalculation(containValue) {
   liveView.textContent = solution;
 }
 
+function negativeOrOperator(key) {
+  if (liveView.textContent == "" && key == "-") {
+    displayValue += "-";
+    liveView.textContent = "-";
+  } else {
+    displayValue += ` ${key} `;
+    liveView.textContent = "";
+  }
+}
+
 function clearText() {
   liveView.textContent = "";
   displayValue = "";
@@ -77,8 +88,7 @@ function displayText(button) {
     displayValue += buttonContent;
     liveView.textContent += buttonContent;
   } else if (button.classList.contains("operator")) {
-    displayValue += ` ${buttonContent} `;
-    liveView.textContent = "";
+    negativeOrOperator(buttonContent);
   }
 }
 
@@ -99,7 +109,6 @@ buttons.forEach((button) => {
     dotLimiter();
   });
 });
-
 equal.addEventListener("click", () => {
   getCalculation(solution);
   dotLimiter();
@@ -126,7 +135,14 @@ document.body.addEventListener("keydown", (e) => {
   let operators = ["+", "-", "/", "*", "%"];
 
   let key = e.key;
-  if ((Number.isInteger(+key) && key !== " ") || key == ".") {
+  if ((Number.isInteger(+key) && key !== " ") || key == "." || key == "-") {
+    if (liveView.textContent == "" && key == "-") {
+      displayValue += "-";
+      liveView.textContent = "-";
+    } else {
+      displayValue += ` ${key} `;
+      liveView.textContent = "";
+    }
     displayValue += key;
     liveView.textContent += key;
   } else if (operators.includes(key)) {
