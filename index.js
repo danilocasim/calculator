@@ -27,6 +27,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+  if (num2 == 0) return "i miss u";
   return num1 / num2;
 }
 
@@ -50,6 +51,7 @@ function operate(operator, firstNumber, secondNumber) {
 }
 
 function round(num) {
+  if (isNaN(num)) return num;
   return Math.round(num * 100) / 100;
 }
 
@@ -81,9 +83,11 @@ function displayText(button) {
 }
 
 function dotLimiter() {
+  const cyan = "#00FFFF";
+
   if (liveView.textContent.split("").includes(".")) {
     dot.disabled = true;
-    dot.style.color = "#00FFFF,";
+    dot.style.color = cyan;
   } else {
     dot.disabled = false;
   }
