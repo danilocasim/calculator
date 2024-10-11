@@ -4,6 +4,15 @@ const liveView = document.querySelector(".live-solution");
 const buttons = document.querySelectorAll("button");
 const equal = document.querySelector(".equal");
 const clear = document.querySelector(".clear");
+const del = document.querySelector(".delete");
+const dot = document.querySelector(".dot");
+
+let firstNumber;
+let secondNumber;
+let operator;
+let solution;
+let displayValue = "";
+let array;
 
 function add(num1, num2) {
   return num1 + num2;
@@ -40,29 +49,6 @@ function operate(operator, firstNumber, secondNumber) {
   }
 }
 
-function displayText() {
-  buttons.forEach((button) => {
-    const buttonContent = button.textContent;
-    button.addEventListener("click", () => {
-      if (button.classList.contains("number")) {
-        displayValue += buttonContent;
-        liveView.textContent += buttonContent;
-      } else if (button.classList.contains("operator")) {
-        displayValue += ` ${buttonContent} `;
-        liveView.textContent = "";
-      }
-    });
-  });
-}
-
-function clearText() {
-  clear.addEventListener("click", () => {
-    liveView.textContent = "";
-    displayValue = "";
-    solution = "";
-  });
-}
-
 function round(num) {
   return Math.round(num * 100) / 100;
 }
@@ -73,23 +59,72 @@ function getCalculation(containValue) {
   operator = array[array.length - 2];
   secondNumber = array[array.length - 1];
   solution = round(operate(operator, +firstNumber, +secondNumber));
-  liveView.textContent = solution ? solution : "";
+  liveView.textContent = solution;
 }
 
-function displaySolution() {
-  displayText();
-  clearText();
+function clearText() {
+  liveView.textContent = "";
+  displayValue = "";
+  solution = "";
+}
 
-  equal.addEventListener("click", () => {
-    getCalculation(solution);
+function displayText(button) {
+  const buttonContent = button.textContent;
+
+  if (button.classList.contains("number")) {
+    displayValue += buttonContent;
+    liveView.textContent += buttonContent;
+  } else if (button.classList.contains("operator")) {
+    displayValue += ` ${buttonContent} `;
+    liveView.textContent = "";
+  }
+}
+
+function dotLimiter() {
+  if (liveView.textContent.split("").includes(".")) {
+    dot.disabled = true;
+    dot.style.backgroundColor = "#EFEFEF";
+    dot.style.color = "black";
+  } else {
+    dot.disabled = false;
+  }
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    displayText(button);
+    dotLimiter();
   });
-}
+});
 
-let firstNumber;
-let secondNumber;
-let operator;
-let solution;
-let displayValue = "";
-let array;
+equal.addEventListener("click", () => {
+  getCalculation(solution);
+  dotLimiter();
+});
 
-displaySolution();
+clear.addEventListener("click", () => {
+  clearText();
+  dotLimiter();
+});
+
+del.addEventListener("click", () => {
+  let deleteNum = () => arr.pop();
+
+  let arr = displayValue.split("");
+  deleteNum();
+  displayValue = arr.join("");
+  liveView.textContent = displayValue;
+  dotLimiter();
+});
+
+document.body.addEventListener("keydown", (e) => {
+  let key = e.key;
+  if (Number.isInteger(+key) && key !== " ") {
+    displayValue += e.key;
+    liveView.textContent += e.key;
+  } else if (key == "Backspace") {
+    clearText();
+  } else if (key == "Enter") {
+    getCalculation(solution);
+  }
+});
