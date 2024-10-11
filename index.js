@@ -107,12 +107,14 @@ clear.addEventListener("click", () => {
 });
 
 del.addEventListener("click", () => {
-  let deleteNum = () => arr.pop();
+  let deleteNum = (arr) => arr.pop();
 
-  let arr = displayValue.split("");
-  deleteNum();
-  displayValue = arr.join("");
-  liveView.textContent = displayValue;
+  let live = liveView.textContent.split("");
+  let display = displayValue.split("");
+  deleteNum(live);
+  deleteNum(display);
+  displayValue = display.join("");
+  liveView.textContent = live.join("");
   dotLimiter();
 });
 

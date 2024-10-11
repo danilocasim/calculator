@@ -68,6 +68,11 @@ button:hover {
   transition: 0.5s;
 }
 
+.operator {
+  background-color: #00ffff;
+  color: black;
+}
+
 .double-width {
   flex: 2;
 }
