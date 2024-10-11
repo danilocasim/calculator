@@ -123,10 +123,15 @@ del.addEventListener("click", () => {
 });
 
 document.body.addEventListener("keydown", (e) => {
+  let operators = ["+", "-", "/", "*", "%"];
+
   let key = e.key;
   if (Number.isInteger(+key) && key !== " ") {
-    displayValue += e.key;
-    liveView.textContent += e.key;
+    displayValue += key;
+    liveView.textContent += key;
+  } else if (operators.includes(key)) {
+    displayValue += ` ${key} `;
+    liveView.textContent = "";
   } else if (key == "Backspace") {
     clearText();
   } else if (key == "Enter") {
