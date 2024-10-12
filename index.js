@@ -7,6 +7,7 @@ const clear = document.querySelector(".clear");
 const del = document.querySelector(".delete");
 const dot = document.querySelector(".dot");
 const negative = document.querySelector(".negative");
+const operators = document.querySelectorAll(".operator");
 
 let firstNumber;
 let secondNumber;
@@ -119,6 +120,7 @@ equal.addEventListener("click", () => {
 clear.addEventListener("click", () => {
   clearText();
   dotLimiter();
+  array = [];
 });
 
 del.addEventListener("click", () => {
