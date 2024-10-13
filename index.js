@@ -59,7 +59,21 @@ function round(num) {
   return Math.round(num * 100) / 100;
 }
 
-function getCalculation(containValue) {
+// function getCalculation(containValue) {
+//   array = displayValue.split(" ");
+
+//   firstNumber = containValue ? solution : array[array.length - 3];
+//   console.log(firstNumber);
+//   operator = array[array.length - 2];
+//   console.log(operator);
+//   secondNumber = array[array.length - 1];
+//   console.log(secondNumber);
+//   solution = round(operate(operator, +firstNumber, +secondNumber));
+
+//   liveView.textContent = solution;
+// }
+
+function continuousCalculation(containValue) {
   array = displayValue.split(" ");
   firstNumber = containValue ? solution : array[array.length - 5];
   console.log(`firstNum: ${firstNumber}`);
@@ -94,6 +108,9 @@ function displayText(button) {
   const buttonContent = button.textContent;
 
   if (button.classList.contains("number")) {
+    if (liveView.textContent == solution) {
+      liveView.textContent = "";
+    }
     displayValue += buttonContent;
     liveView.textContent += buttonContent;
   } else if (button.classList.contains("operator")) {
@@ -103,7 +120,7 @@ function displayText(button) {
     displayValue.split(" ").length >= 5 &&
     button.classList.contains("operator")
   ) {
-    getCalculation(solution);
+    continuousCalculation(solution);
     liveView.textContent = solution;
   }
 }
