@@ -169,6 +169,9 @@ document.body.addEventListener("keydown", (e) => {
 
   let key = e.key;
   if ((Number.isInteger(+key) && key !== " ") || key == ".") {
+    if (liveView.textContent == solution) {
+      liveView.textContent = "";
+    }
     displayValue += key;
     liveView.textContent += key;
   } else if (operators.includes(key)) {
@@ -177,5 +180,9 @@ document.body.addEventListener("keydown", (e) => {
     clearText();
   } else if (key == "Enter") {
     getCalculation(solution);
+  }
+  if (displayValue.split(" ").length >= 5 && operators.includes(key)) {
+    continuousCalculation(solution);
+    liveView.textContent = solution;
   }
 });
