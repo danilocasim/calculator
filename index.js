@@ -74,14 +74,9 @@ function getCalculation(containValue) {
 function continuousCalculation(containValue) {
   array = displayValue.split(" ");
   firstNumber = containValue ? solution : array[array.length - 5];
-  console.log(`firstNum: ${firstNumber}`);
   operator = array[array.length - 4];
-  console.log(`operator: ${operator}`);
   secondNumber = array[array.length - 3];
-  console.log(`secondNum: ${secondNumber}`);
   solution = round(operate(operator, +firstNumber, +secondNumber));
-  console.log(`Solution: ${solution}`);
-  console.log(array);
 
   liveView.textContent = solution;
 }
@@ -102,15 +97,19 @@ function clearText() {
   solution = "";
 }
 
+function addOperand(number) {
+  if (liveView.textContent == solution) {
+    liveView.textContent = "";
+  }
+  displayValue += number;
+  liveView.textContent += number;
+}
+
 function displayText(button) {
   const buttonContent = button.textContent;
 
   if (button.classList.contains("number")) {
-    if (liveView.textContent == solution) {
-      liveView.textContent = "";
-    }
-    displayValue += buttonContent;
-    liveView.textContent += buttonContent;
+    addOperand(buttonContent);
   } else if (button.classList.contains("operator")) {
     negativeOrOperator(buttonContent);
   }
@@ -169,11 +168,7 @@ document.body.addEventListener("keydown", (e) => {
 
   let key = e.key;
   if ((Number.isInteger(+key) && key !== " ") || key == ".") {
-    if (liveView.textContent == solution) {
-      liveView.textContent = "";
-    }
-    displayValue += key;
-    liveView.textContent += key;
+    addOperand(key);
   } else if (operators.includes(key)) {
     negativeOrOperator(key);
   } else if (key == "Backspace") {
