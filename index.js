@@ -59,19 +59,17 @@ function round(num) {
   return Math.round(num * 100) / 100;
 }
 
-// function getCalculation(containValue) {
-//   array = displayValue.split(" ");
+function getCalculation(containValue) {
+  array = displayValue.split(" ");
 
-//   firstNumber = containValue ? solution : array[array.length - 3];
-//   console.log(firstNumber);
-//   operator = array[array.length - 2];
-//   console.log(operator);
-//   secondNumber = array[array.length - 1];
-//   console.log(secondNumber);
-//   solution = round(operate(operator, +firstNumber, +secondNumber));
+  firstNumber = containValue ? solution : array[array.length - 3];
+  operator = array[array.length - 2];
+  secondNumber = array[array.length - 1];
+  solution = round(operate(operator, +firstNumber, +secondNumber));
+  liveView.textContent = solution;
 
-//   liveView.textContent = solution;
-// }
+  displayValue = displayValue.split(" ");
+}
 
 function continuousCalculation(containValue) {
   array = displayValue.split(" ");
@@ -83,7 +81,7 @@ function continuousCalculation(containValue) {
   console.log(`secondNum: ${secondNumber}`);
   solution = round(operate(operator, +firstNumber, +secondNumber));
   console.log(`Solution: ${solution}`);
-  console.log(`Array: ${array}`);
+  console.log(array);
 
   liveView.textContent = solution;
 }
@@ -142,6 +140,7 @@ buttons.forEach((button) => {
     dotLimiter();
   });
 });
+
 equal.addEventListener("click", () => {
   getCalculation(solution);
   dotLimiter();
