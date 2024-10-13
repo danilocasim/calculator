@@ -61,38 +61,18 @@ function round(num) {
 
 function getCalculation(containValue) {
   array = displayValue.split(" ");
-  firstNumber = containValue ? solution : array[array.length - 3];
-  console.log(firstNumber);
-  operator = array[array.length - 2];
-  console.log(operator);
-  secondNumber = array[array.length - 1];
-  console.log(secondNumber);
+  firstNumber = containValue ? solution : array[array.length - 5];
+  console.log(`firstNum: ${firstNumber}`);
+  operator = array[array.length - 4];
+  console.log(`operator: ${operator}`);
+  secondNumber = array[array.length - 3];
+  console.log(`secondNum: ${secondNumber}`);
   solution = round(operate(operator, +firstNumber, +secondNumber));
+  console.log(`Solution: ${solution}`);
+  console.log(`Array: ${array}`);
+
   liveView.textContent = solution;
 }
-/*
-
-function continousCalculation(containValue) {
-    const calculation = [];
-
-    calculation[0] = containValue ? solution : array[array.length - 5];
-    console.log(calculation[0]);
-
-    calculation[1] = containValue ?
-        array[array.length - 2] :
-        array[array.length - 4];
-    console.log(calculation[1]);
-
-    calculation[2] = containValue ?
-        array[array.length - 1] :
-        array[array.length - 3];
-    console.log(calculation[2]);
-
-    solution = round(operate(calculation[1], +calculation[0], +calculation[2]));
-    liveView.textContent = solution;
-    console.log(calculation);
-    console.log(array);
-} */
 
 function negativeOrOperator(key) {
   if (liveView.textContent == "" && key == "-") {
@@ -119,14 +99,13 @@ function displayText(button) {
   } else if (button.classList.contains("operator")) {
     negativeOrOperator(buttonContent);
   }
-  /*
-        if (
-          displayValue.split(" ").length >= 5 &&
-          button.classList.contains("operator")
-        ) {
-          array = displayValue.split(" ");
-          continousCalculation(solution);
-        }*/
+  if (
+    displayValue.split(" ").length >= 5 &&
+    button.classList.contains("operator")
+  ) {
+    getCalculation(solution);
+    liveView.textContent = solution;
+  }
 }
 
 function dotLimiter() {
