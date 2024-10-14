@@ -1,3 +1,7 @@
+:root {
+  --neon: #00ffff;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -13,7 +17,7 @@ html {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
-  color: #00ffff;
+  color: var(--neon);
 }
 
 .container {
@@ -31,7 +35,7 @@ body {
   gap: 25px;
   padding: 15px;
   border-radius: 25px;
-  border: 2px solid #00ffff;
+  border: 2px solid var(--neon);
   -moz-box-shadow: 2px 0px 30px 5px rgba(0, 255, 255, 1);
   -webkit-box-shadow: 2px 0px 30px 5px rgba(0, 255, 255, 1);
   box-shadow: 2px 0px 30px 5px rgba(0, 255, 255, 1);
@@ -43,7 +47,7 @@ body {
   text-align: end;
   padding-top: 25px;
   font-size: 50px;
-  border: 2px solid #00ffff;
+  border: 2px solid var(--neon);
   border-radius: 25px;
   overflow: hidden;
 }
@@ -67,23 +71,22 @@ body {
 button {
   flex: 1;
   height: 50px;
-  border: 2px solid #00ffff;
+  border: 2px solid var(--neon);
   background-color: inherit;
-  color: #00ffff;
+  color: var(--neon);
   cursor: pointer;
   border-radius: 50px;
   font-size: 20px;
 }
 
-button:hover {
-  background-color: #00ffff;
+button:hover,
+.operator {
+  background-color: var(--neon);
   color: black;
-  transition: 0.5s;
 }
 
-.operator {
-  background-color: #00ffff;
-  color: black;
+button:hover {
+  transition: 0.5s;
 }
 
 .double-width {
