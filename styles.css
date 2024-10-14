@@ -1,5 +1,5 @@
 :root {
-  --neon: #00ffff;
+  --cyan: #00ffff;
 }
 
 html {
@@ -17,7 +17,7 @@ html {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
-  color: var(--neon);
+  color: var(--cyan);
 }
 
 .container {
@@ -35,7 +35,7 @@ body {
   gap: 25px;
   padding: 15px;
   border-radius: 25px;
-  border: 2px solid var(--neon);
+  border: 2px solid var(--cyan);
   -moz-box-shadow: 2px 0px 30px 5px rgba(0, 255, 255, 1);
   -webkit-box-shadow: 2px 0px 30px 5px rgba(0, 255, 255, 1);
   box-shadow: 2px 0px 30px 5px rgba(0, 255, 255, 1);
@@ -47,7 +47,7 @@ body {
   text-align: end;
   padding-top: 25px;
   font-size: 50px;
-  border: 2px solid var(--neon);
+  border: 2px solid var(--cyan);
   border-radius: 25px;
   overflow: hidden;
 }
@@ -71,7 +71,7 @@ body {
 button {
   flex: 1;
   height: 50px;
-  border: 2px solid var(--neon);
+  border: 2px solid var(--cyan);
   background-color: inherit;
   color: var(--neon);
   cursor: pointer;
@@ -81,7 +81,7 @@ button {
 
 button:hover,
 .operator {
-  background-color: var(--neon);
+  background-color: var(--cyan);
   color: black;
 }
 
